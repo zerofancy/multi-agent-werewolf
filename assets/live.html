@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>狼人杀 · 实时观战</title>
+<style>
+/* REPLAY_STYLES */
+html { scroll-behavior:auto; overflow-anchor:none; scroll-padding-top:135px; }
+.live-bar { position:sticky; top:0; z-index:5; background:#101722; border-bottom:1px solid var(--line); padding:10px max(16px,calc((100vw - 1190px)/2)); }
+.live-row { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; }
+#connection { color:var(--green); font-size:12px; }
+#connection.error { color:var(--wolves); }
+#revision,#published,#final-path { font-size:11px; color:var(--muted); }
+#progress { font-size:13px; margin-top:4px; }
+#message { color:var(--muted); font-size:12px; }
+.live-bar button,.live-bar a { color:var(--gold); background:var(--panel); border:1px solid var(--line); border-radius:5px; font:inherit; font-size:12px; padding:3px 10px; cursor:pointer; }
+#new-events { position:fixed; bottom:22px; right:20px; z-index:6; padding:10px 18px; color:var(--ink); background:#33465e; border:1px solid var(--gold); border-radius:20px; cursor:pointer; }
+[hidden] { display:none !important; }
+button:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+#hero:empty { min-height:180px; }
+.reader-nav { top:140px; }
+@media(max-width:600px) { .live-bar { padding:9px 14px; } #new-events { right:12px; bottom:12px; } }
+</style>
+<script src="/live.js" defer></script>
+</head>
+<body id="top">
+<div class="live-bar">
+  <div class="live-row"><strong>🐺 实时观战</strong><span id="connection" role="status">连接中…</span><span id="revision"></span><button id="follow" type="button">跟随最新</button><a id="offline" hidden>下载离线复盘</a></div>
+  <p id="progress" aria-live="polite">等待已提交的对局快照</p><p id="message"></p><p id="published"></p><p id="final-path" hidden></p>
+</div>
+<header class="hero"><div id="hero" class="hero-inner"></div></header>
+<div class="reader-layout">
+  <aside class="reader-nav" aria-label="章节目录"><h2>顺序目录</h2><nav id="navigation"></nav></aside>
+  <main id="timeline"><div id="chapters"></div><div id="appendices"></div><footer>实时观战为法官全知视角 · 私聊范围沿用实际日志 · 页面连接正常不代表法官已推进</footer></main>
+</div>
+<button id="new-events" type="button" hidden></button>
+</body>
+</html>

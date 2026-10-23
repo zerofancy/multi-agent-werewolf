@@ -1,0 +1,4 @@
+interface:
+  display_name: "多 Agent 狼人杀"
+  short_description: "主持有警长的12人预女猎守，逐人发言、独立锁票、实时观战与离线复盘"
+  default_prompt: "使用 $multi-agent-werewolf 主持一局有警长的12人预女猎守，设定鲜明人物风格，恢复警徽与正常环形发言，逐人说完立即更新实时观战页，各自独立锁票后统一公布，女巫解药用完不再看刀口，终局先给原玩家全局总结再收感言，导出完整离线HTML并关闭临时HTTP服务。"
